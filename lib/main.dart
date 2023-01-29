@@ -19,67 +19,32 @@ class ContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        TextFieldDemo(),
-        SizedBox(
-          height: 20,
-        ),
-        ButtonWidgets(),
+        FormDemo()
       ],
     );
   }
 }
 
-class ButtonWidgets extends StatelessWidget {
+class FormDemo extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 20,
-        ),
-        ElevatedButton.icon(onPressed: () {}, icon: const Icon(Icons.send), label: const Text('发送'))
-      ],
-    );
-  }
+  _FormDemoState createState() => _FormDemoState();
 }
 
-class TextFieldDemo extends StatelessWidget {
+class _FormDemoState extends State {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Column(
+    return Form(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TextField(
-          decoration: InputDecoration(
-            icon: Icon(Icons.person),
-            labelText: '姓名',
-            hintText: '请输入姓名',
-          ),
-          onSubmitted: (value) {
-            print("onSubmitted:$value");
-          },
+        TextFormField(
+          decoration: InputDecoration(icon: Icon(Icons.people), labelText: '用户名'),
         ),
-        TextField(
-          decoration: InputDecoration(
-            icon: Icon(Icons.numbers),
-            labelText: '年龄',
-            hintText: '请输入年龄',
-          ),
-          onSubmitted: (value) {
-            print("onSubmitted:$value");
-          },
-        ),
-        TextField(
-          decoration: InputDecoration(
-            icon: Icon(Icons.pets),
-            labelText: '宠物',
-            hintText: '请输入宠物名',
-          ),
-          onSubmitted: (value) {
-            print("onSubmitted:$value");
-          },
-        ),
+        TextFormField(
+          decoration: InputDecoration(icon: Icon(Icons.phone), labelText: '手机号'),
+        )
       ],
-    );
+    ));
   }
 }
