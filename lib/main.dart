@@ -9,8 +9,24 @@ class MyApp extends StatelessWidget {
         title: 'hellow',
         home: Scaffold(
           appBar: AppBar(title: Text('标题')),
-          body: ButtonWidgets(),
+          body: ContentWidget(),
         ));
+  }
+}
+
+class ContentWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        CircleAvatarWidget(),
+        PictureWidget(),
+        SizedBox(
+          height: 20,
+        ),
+        ButtonWidgets(),
+      ],
+    );
   }
 }
 
@@ -19,30 +35,38 @@ class ButtonWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ElevatedButton(
-            onPressed: () {
-              print('按了一下ElevatedButton');
-            },
-            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll<Color>(Colors.redAccent)),
-            child: const Text('ElevatedButton')),
-        TextButton(
-            onPressed: () {
-              print('TextButton');
-            },
-            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll<Color>(Colors.redAccent)),
-            child: const Text('TextButton')),
-        OutlinedButton(
-            onPressed: () {
-              print('OutlineButton');
-            },
-            child: const Text('OutlineButton')),
-        IconButton(
-            onPressed: () {
-              print('IconButton');
-            },
-            icon: const Icon(Icons.add)),
-        ElevatedButton.icon(onPressed: () {}, icon: const Icon(Icons.send), label: const Text('发生'))
+        ElevatedButton.icon(onPressed: () {}, icon: const Icon(Icons.send), label: const Text('发送'))
       ],
+    );
+  }
+}
+
+class PictureWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: Container(
+        child: Image.asset(
+          'image/blob_reach.png',
+          alignment: Alignment.topCenter,
+          // fit: BoxFit.fill,
+        ),
+      ),
+    );
+  }
+}
+
+class CircleAvatarWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: CircleAvatar(
+        radius: 50,
+        backgroundImage: NetworkImage("https://tva1.sinaimg.cn/large/006y8mN6gy1g7aa03bmfpj3069069mx8.jpg"),
+        child: Container(alignment: Alignment(0, .5), width: 200, height: 200, child: Text("兵长利威尔")),
+      ),
     );
   }
 }
