@@ -19,8 +19,7 @@ class ContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        CircleAvatarWidget(),
-        PictureWidget(),
+        TextFieldDemo(),
         SizedBox(
           height: 20,
         ),
@@ -35,38 +34,52 @@ class ButtonWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 20,
+        ),
         ElevatedButton.icon(onPressed: () {}, icon: const Icon(Icons.send), label: const Text('发送'))
       ],
     );
   }
 }
 
-class PictureWidget extends StatelessWidget {
+class TextFieldDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Center(
-      child: Container(
-        child: Image.asset(
-          'image/blob_reach.png',
-          alignment: Alignment.topCenter,
-          // fit: BoxFit.fill,
+    return Column(
+      children: [
+        TextField(
+          decoration: InputDecoration(
+            icon: Icon(Icons.person),
+            labelText: '姓名',
+            hintText: '请输入姓名',
+          ),
+          onSubmitted: (value) {
+            print("onSubmitted:$value");
+          },
         ),
-      ),
-    );
-  }
-}
-
-class CircleAvatarWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Center(
-      child: CircleAvatar(
-        radius: 50,
-        backgroundImage: NetworkImage("https://tva1.sinaimg.cn/large/006y8mN6gy1g7aa03bmfpj3069069mx8.jpg"),
-        child: Container(alignment: Alignment(0, .5), width: 200, height: 200, child: Text("兵长利威尔")),
-      ),
+        TextField(
+          decoration: InputDecoration(
+            icon: Icon(Icons.numbers),
+            labelText: '年龄',
+            hintText: '请输入年龄',
+          ),
+          onSubmitted: (value) {
+            print("onSubmitted:$value");
+          },
+        ),
+        TextField(
+          decoration: InputDecoration(
+            icon: Icon(Icons.pets),
+            labelText: '宠物',
+            hintText: '请输入宠物名',
+          ),
+          onSubmitted: (value) {
+            print("onSubmitted:$value");
+          },
+        ),
+      ],
     );
   }
 }
